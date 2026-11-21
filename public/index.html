@@ -101,6 +101,7 @@ const norm=s=>s.toLowerCase().replace(/[’‘`]/g,"'").replace(/[.?!]+$/,"").re
 const shuffle=a=>[...a].sort(()=>Math.random()-.5);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e};
 function show(i){
+ if(typeof flush==="function")flush();
  view.style.setProperty("--c",COL[i]);[...nav.children].forEach((b,j)=>b.setAttribute("aria-selected",i===j));
  view.innerHTML="";
  const r=el("div","rule");r.innerHTML=`<div class="big">${IC[i]}</div><div>${T[i].rule}<div class="strip">${ST[i]}</div></div>`;view.append(r);
@@ -143,8 +144,11 @@ function show(i){
 }
 T.forEach((t,i)=>{const b=el("button","",IC[i]+" "+t.n);b.style.setProperty("--c",COL[i]);b.setAttribute("role","tab");b.onclick=()=>show(i);nav.append(b)});
 const $=id=>document.getElementById(id),API="/api/progress";
-let user="",canSave=false,timer;
-function queueSave(){if(!canSave)return;$("saveSt").textContent="Saving…";clearTimeout(timer);timer=setTimeout(async()=>{try{const r=await fetch(API,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:user,data:P})});if(!r.ok)throw 0;$("saveSt").textContent="✓ Saved"}catch(e){$("saveSt").textContent="⚠ Not saved – check your internet"}},500)}
+let user="",canSave=false,timer,dirty=false;
+function queueSave(){if(!canSave)return;dirty=true;$("saveSt").textContent="● Saving soon…";clearTimeout(timer);timer=setTimeout(flush,20000)}
+async function flush(){if(!dirty||!canSave)return;dirty=false;clearTimeout(timer);$("saveSt").textContent="Saving…";try{const r=await fetch(API,{method:"PUT",keepalive:true,headers:{"Content-Type":"application/json"},body:JSON.stringify({name:user,data:P})});if(!r.ok)throw 0;$("saveSt").textContent="✓ Saved"}catch(e){dirty=true;$("saveSt").textContent="⚠ Not saved yet – check your internet"}}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")flush()});
+addEventListener("pagehide",flush);
 async function doLogin(raw){
  const name=raw.trim().toLowerCase();
  if(!/^[a-z0-9_-]{3,20}$/.test(name)){$("msg").textContent="Use 3–20 letters (a–z), numbers, - or _. No spaces.";return}
@@ -156,7 +160,7 @@ async function doLogin(raw){
 }
 $("go").onclick=()=>doLogin($("nameIn").value);
 $("nameIn").onkeydown=e=>{if(e.key==="Enter")doLogin($("nameIn").value)};
-$("out").onclick=()=>{try{localStorage.removeItem("g2user")}catch(e){}location.reload()};
+$("out").onclick=()=>{flush();try{localStorage.removeItem("g2user")}catch(e){}location.reload()};
 try{const u=localStorage.getItem("g2user");if(u)doLogin(u)}catch(e){}
 </script>
 </body>
