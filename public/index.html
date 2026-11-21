@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 2 – Grammar Practice</title>
+<style>
+:root{--bg:#f6f8f1;--ink:#1d2b1f;--card:#fff;--green:#6a9a1f;--dark:#2f5d2a;--blue:#1f5fa8;--ok:#1f7a35;--bad:#b3261e;--line:#d5dcc6}
+@media(prefers-color-scheme:dark){:root{--bg:#172018;--ink:#eef3e6;--card:#223024;--green:#9cc94a;--dark:#a9d68a;--blue:#8dbcf2;--ok:#7fd48f;--bad:#ff9a92;--line:#3b4d3c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Verdana,Tahoma,sans-serif}
+header{background:var(--green);color:#10200c;padding:20px 16px}
+header h1{margin:0;font-size:1.5rem}
+header p{margin:4px 0 0}
+main{max-width:760px;margin:0 auto;padding:16px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+nav button{border:2px solid var(--green);background:var(--card);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}
+nav button[aria-selected=true]{background:var(--green);color:#10200c;font-weight:bold}
+.rule{border-left:6px solid var(--blue);background:var(--card);padding:12px 16px;margin-bottom:16px;border-radius:0 8px 8px 0}
+.ex{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:18px}
+.ex h3{margin:0 0 4px;color:var(--dark)}
+.score{font-size:.9rem;color:var(--blue);margin-bottom:8px}
+ol{padding-left:24px;margin:0}
+li{margin:0 0 14px}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.opts button,.chk{border:2px solid var(--blue);background:transparent;color:var(--ink);border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+input{font:inherit;padding:6px 8px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:min(100%,280px)}
+.fb{margin-top:6px;font-size:.95rem}
+.good{color:var(--ok)}.bad{color:var(--bad)}
+.opts button.right{background:var(--ok);border-color:var(--ok);color:#fff}
+.opts button.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.tip{margin-top:4px}
+body{font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;background:var(--bg) radial-gradient(circle at 10% 10%,rgba(255,209,102,.25),transparent 40%),radial-gradient(circle at 90% 30%,rgba(143,211,255,.25),transparent 40%)}
+header{background:linear-gradient(120deg,#9be7a1,#8fd3ff);position:relative;padding:18px 16px 34px;overflow:hidden}
+.hd{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.mouse{font-size:3.4rem;line-height:1;animation:wig 2.4s ease-in-out 2}
+@keyframes wig{50%{transform:rotate(-12deg) scale(1.1)}}
+header h1{font-size:1.7rem}
+.dec{font-size:1.8rem;letter-spacing:6px;margin-top:4px}
+header svg{position:absolute;left:0;bottom:-1px;width:100%;height:22px}
+nav button{border-radius:999px;border-color:var(--c);font-weight:bold;transition:transform .15s}
+nav button:hover{transform:translateY(-2px)}
+nav button[aria-selected=true]{background:var(--c);color:#1d2b1f}
+.rule{border-left-color:var(--c);border-radius:14px;display:flex;gap:14px;align-items:center}
+.big{font-size:2.6rem;line-height:1.1;text-align:center;flex:none;min-width:64px}
+.strip{font-size:1.3rem;margin-top:6px}
+.ex{border-radius:18px;border-top:8px solid var(--c);box-shadow:0 3px 0 var(--line)}
+.ex h3{font-size:1.2rem}
+.score{font-size:1rem;font-weight:bold}
+.opts button,.chk{border-radius:999px;border-color:var(--c);background:var(--c);color:#1d2b1f;font-weight:bold}
+.opts button:hover:not(:disabled){transform:scale(1.05)}
+.opts button:disabled{opacity:.9;cursor:default}
+.opts button.right{background:var(--ok);color:#fff}.opts button.wrong{background:var(--bad);color:#fff}
+.tip{background:var(--bg);border:2px dashed var(--c);border-radius:14px;padding:6px 10px;margin-top:6px}
+.win{animation:pop .5s}
+@keyframes pop{0%{transform:scale(.8)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.reset{border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:4px 12px;font:inherit;font-size:.9rem;cursor:pointer;margin-bottom:12px}
+.reset:hover{border-color:var(--c)}
+.login{background:var(--card);border:1px solid var(--line);border-top:8px solid #ffd166;border-radius:18px;padding:18px;text-align:center;max-width:460px;margin:20px auto}
+.login p{margin:8px 0}
+.bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px;font-weight:bold}
+.bar .reset{margin:0 0 0 auto}#saveSt{font-weight:normal;font-size:.9rem;color:var(--blue)}
+</style>
+</head>
+<body>
+<header><div class="hd"><div class="mouse" aria-hidden="true">🐭</div><div><h1>Unit 2 – Grammar Practice</h1><p>Class 5 · Talking about your school</p><div class="dec" aria-hidden="true">🎒 📚 ✏️ 📏 🐶</div></div></div><svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0 5 Q12 0 25 5 T50 5 T75 5 T100 5 V10 H0Z" fill="#f6f8f1"/></svg></header>
+<main>
+<section id="loginBox" class="login"><div class="big">🐭</div><h2>Who are you?</h2><p>Choose a nickname (not your real name!). Use the same nickname on every device and you will find your progress again.</p><input id="nameIn" maxlength="20" placeholder="my-nickname" autocomplete="off" autocapitalize="off" aria-label="Nickname"> <button id="go" class="chk">Start 🚀</button><p id="msg" class="fb"></p></section>
+<div id="app" hidden><div class="bar"><span id="who"></span><span id="saveSt"></span><button id="out" class="reset">Log out</button></div><nav id="nav" role="tablist"></nav><div id="view"></div></div>
+</main>
+<script>
+const AA=["a","an"],TH=["the [ðə]","the [ði]"],AAT=["a","an","the"],HG=["have got","has got"],NG=["haven't got","hasn't got"],HH=["Have","Has"],SA=["has","have","hasn't","haven't"];
+const T=[
+{n:"G8 a / an",rule:"Use <b>a</b> before a consonant <i>sound</i> and <b>an</b> before a vowel <i>sound</i>. Listen to the sound, not the spelling: <i>a uniform</i>, <i>an hour</i>.",ex:[
+{t:"Exercise 1: a or an?",tip:"Vowel sound → an. Consonant sound → a.",items:[["___ cousin","a",AA],["___ aunt","an",AA],["___ fridge","a",AA],["___ idea","an",AA],["___ answer","an",AA],["___ loft","a",AA],["___ address","an",AA],["___ elephant","an",AA]]},
+{t:"Exercise 2: Fill in the gap",tip:"Look at the first SOUND of the next word. ‘uniform’ starts with [j] – that is a consonant sound!",items:[["Here's ___ orange pencil-case.","an",AA],["This is ___ uniform.","a",AA],["He's got ___ old bag.","an",AA],["It's ___ new whiteboard.","a",AA],["We've got ___ English lesson.","an",AA],["She's got ___ umbrella.","an",AA],["Jay has ___ uncle in London.","an",AA]]},
+{t:"Exercise 3: Type a or an",tip:"Say the word aloud. Does it start with a vowel sound?",items:[["___ hobby","a"],["___ email","an"],["___ ice cream","an"],["___ pocket money","a"],["___ interview","an"],["___ unit","a"]]}]},
+{n:"G9 the",rule:"There is only one form of the definite article: <b>the</b>. But you say <b>[ðə]</b> before a consonant sound and <b>[ði]</b> before a vowel sound.",ex:[
+{t:"Exercise 1: How do you say it?",tip:"Before a consonant sound: [ðə]. Before a vowel sound: [ði].",items:[["the dog","the [ðə]",TH],["the house","the [ðə]",TH],["the Art room","the [ði]",TH],["the exercise book","the [ði]",TH],["the ending","the [ði]",TH],["the uniform","the [ðə]",TH],["the uncle","the [ði]",TH],["the ruler","the [ðə]",TH]]},
+{t:"Exercise 2: a, an or the?",tip:"First time you mention something: a / an. When it is already known: the.",items:[["I've got a dog. ___ dog is brown.","the",AAT],["Look! There's ___ English book on the desk.","an",AAT],["Who's ___ new boy? – That's Jay.","the",AAT],["Jay's got ___ idea.","an",AAT],["We've got a computer room. ___ computer room is big.","the",AAT],["Is there ___ pen under the chair?","a",AAT],["Open ___ window, please.","the",AAT]]},
+{t:"Exercise 3: Type a, an or the",tip:"Known thing → the. New thing → a / an (watch the sound!).",items:[["Mr Swindon has got ___ idea.","an"],["___ teacher in our classroom is nice.","the"],["I've got ___ new phone.","a"],["Look at ___ whiteboard!","the"],["Holly's got ___ orange pen.","an"],["Is this ___ apple?","an"]]}]},
+{n:"G10 have got",rule:"Use <b>have got</b> for I, you, we, they. Use <b>has got</b> for he, she, it. Short forms: <b>I've got, you've got, he's got, she's got, it's got, we've got, they've got</b>.",ex:[
+{t:"Exercise 1: have got or has got?",tip:"he / she / it → has got. All the others → have got.",items:[["I ___ a dog.","have got",HG],["Holly ___ two guinea pigs.","has got",HG],["We ___ a cool teacher.","have got",HG],["My brother ___ a football.","has got",HG],["The students ___ a big cafeteria.","have got",HG],["It ___ a nice colour.","has got",HG],["You ___ a great idea.","have got",HG],["Jay and Shahid ___ small jobs.","have got",HG]]},
+{t:"Exercise 2: Short forms",tip:"I've / you've / we've / they've got – he's / she's / it's got.",items:[["He has got a bike. → ___ a bike.","he's got"],["They have got a cat. → ___ a cat.","they've got"],["She has got a lucky charm. → ___ a lucky charm.","she's got"],["We have got two books. → ___ two books.","we've got"],["It has got a long tail. → ___ a long tail.","it's got"],["You have got a cool phone. → ___ a cool phone.","you've got"]]},
+{t:"Exercise 3: Say it in English",tip:"Remember: have got / has got. Short forms are OK!",items:[["Ich habe einen Hund.","I've got a dog|I have got a dog"],["Holly hat einen Hamster.","Holly has got a hamster|Holly's got a hamster"],["Wir haben einen Computerraum.","We've got a computer room|We have got a computer room"],["Du hast eine Frage.","You've got a question|You have got a question"],["Er hat eine große Tasche.","He's got a big bag|He has got a big bag"]]}]},
+{n:"G11 haven't got",rule:"<b>Have got</b> has two parts, so <b>not</b> goes between <i>have</i> and <i>got</i>: <b>haven't got</b>. With he, she, it use <b>hasn't got</b>. Careful: you can't say <i>We'ven't got</i>!",ex:[
+{t:"Exercise 1: haven't got or hasn't got?",tip:"he / she / it → hasn't got. All the others → haven't got.",items:[["I ___ my lucky charm.","haven't got",NG],["Holly ___ her pen.","hasn't got",NG],["We ___ a recording studio.","haven't got",NG],["The school shop ___ sweets.","hasn't got",NG],["My old school ___ a cafeteria.","hasn't got",NG],["They ___ a uniform.","haven't got",NG],["You ___ a ruler.","haven't got",NG],["Jay ___ a favourite colour.","hasn't got",NG]]},
+{t:"Exercise 2: Make it negative",tip:"The ‘not’ goes between have and got: haven't / hasn't.",items:[["I have got a rubber. → I ___ got a rubber.","haven't"],["He has got a bike. → He ___ got a bike.","hasn't"],["They have got a pet. → They ___ got a pet.","haven't"],["It has got a door. → It ___ got a door.","hasn't"],["We have got homework. → We ___ got homework.","haven't"],["She has got a pen. → She ___ got a pen.","hasn't"]]},
+{t:"Exercise 3: Which sentence is correct?",tip:"Short forms: never ‘We'ven't’. Say: We haven't got. With he / she / it: hasn't got.",items:[["Which sentence is correct?","We haven't got a pet.",["We haven't got a pet.","We'ven't got a pet.","We hasn't got a pet."]],["Which sentence is correct?","Holly hasn't got a pen.",["Holly hasn't got a pen.","Holly haven't got a pen.","Holly's n't got a pen."]],["Which sentence is correct?","They haven't got a dog.",["They haven't got a dog.","They hasn't got a dog.","They've n't got a dog."]],["Which sentence is correct?","It hasn't got a tail.",["It hasn't got a tail.","It haven't got a tail.","It's n't got a tail."]],["Which sentence is correct?","I haven't got a phone.",["I haven't got a phone.","I hasn't got a phone.","I'ven't got a phone."]]]}]},
+{n:"G12 Questions",rule:"Questions: <b>Have / Has + subject + got</b>? (<i>Has she got a pen?</i>). Short answers use <b>have / has</b> or <b>haven't / hasn't</b> – without <i>got</i>: <i>Yes, she has. / No, I haven't.</i>",ex:[
+{t:"Exercise 1: Have or Has?",tip:"he / she / it → Has. All the others → Have.",items:[["___ you got a pen?","Have",HH],["___ he got a brother?","Has",HH],["___ they got a big house?","Have",HH],["___ Holly got a lucky charm?","Has",HH],["___ your teacher got a car?","Has",HH],["___ the students got books?","Have",HH],["___ it got a name?","Has",HH],["___ we got homework?","Have",HH]]},
+{t:"Exercise 2: Short answers",tip:"Short answers: Yes, he has. / No, I haven't. Don't use ‘got’ and match the person!",items:[["Has Jay got a pen? – Yes, he ___.","has",SA],["Have you got a dog? – No, I ___.","haven't",SA],["Have they got a car? – Yes, they ___.","have",SA],["Has she got a phone? – No, she ___.","hasn't",SA],["Have we got a test? – Yes, we ___.","have",SA],["Has it got a name? – No, it ___.","hasn't",SA]]},
+{t:"Exercise 3: Write the question",tip:"Question: Have / Has + subject + got + …? Example: Has she got a pen?",items:[["Write the question: Jay / a pet","Has Jay got a pet"],["Write the question: you / a pencil-case","Have you got a pencil-case"],["Write the question: the school / a cafeteria","Has the school got a cafeteria"],["Write the question: they / a house","Have they got a house"],["Write the question: Holly / a lucky charm","Has Holly got a lucky charm"]]}]}
+];
+const IC=["🎒","🦉","🐹","🚫","🙋"],COL=["#ffd166","#9be7a1","#8fd3ff","#ffb4c8","#cdb4ff"],ST=["📚 a book · 🍊 an orange · ✏️ a pencil · 🦉 an owl","🐶 the dog · 🏠 the house · 🍎 the apple","🐶 I've got a dog · 🐹 She's got a hamster","🎒 I haven't got my lucky charm 🍀","🙋 Have you got a pen? – Yes, I have."];
+let P={},restoring=false;
+function rec(k,n,v){if(restoring)return;(P[k]=P[k]||{})[n]=v;queueSave()}
+const norm=s=>s.toLowerCase().replace(/[’‘`]/g,"'").replace(/[.?!]+$/,"").replace(/\s+/g," ").trim();
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e};
+function show(i){
+ view.style.setProperty("--c",COL[i]);[...nav.children].forEach((b,j)=>b.setAttribute("aria-selected",i===j));
+ view.innerHTML="";
+ const r=el("div","rule");r.innerHTML=`<div class="big">${IC[i]}</div><div>${T[i].rule}<div class="strip">${ST[i]}</div></div>`;view.append(r);
+ const build=(ex,key)=>{
+  const box=el("div","ex"),sc=el("div","score");let ok=0,done=0;
+  const upd=()=>{sc.textContent=`${"⭐".repeat(ok)} ${ok} / ${ex.items.length} right`+(done===ex.items.length?(ok===done?" 🏆 Perfect!":" 👍 Done!"):"");if(done===ex.items.length&&ok===done){sc.classList.add("win")}};upd();
+  const rb=el("button","reset","↻ Start again");rb.onclick=()=>{delete P[key];queueSave();const nb=build(ex,key);box.replaceWith(nb);nb.scrollIntoView({block:"nearest"})};box.append(el("h3","",ex.t),sc,rb);
+  const ol=el("ol");
+  ex.items.forEach(([q,a,opts],n)=>{
+   const li=el("li");li.append(el("div","",q.replace("___","_____")));
+   const fb=el("div","fb");let locked=false;
+   const finish=(good,btn)=>{
+    locked=true;done++;if(good)ok++;upd();
+    fb.className="fb "+(good?"good":"bad");
+    fb.textContent=good?"✓ Correct! 🎉":"✗ Not quite. Right answer: "+a.split("|")[0];
+    if(!good){const tp=el("div","tip","🐭 Tip: "+ex.tip);fb.append(tp)}
+    li.querySelectorAll("button,input").forEach(x=>x.disabled=true);
+   };
+   if(opts){
+    const row=el("div","opts");
+    (opts.length>3&&opts[0].includes("sentence")?opts:opts.length===3&&opts[0].endsWith(".")?shuffle(opts):opts).forEach(o=>{
+     const b=el("button","",o);
+     b.onclick=()=>{if(locked)return;const good=o===a;rec(key,n,o);finish(good);b.classList.add(good?"right":"wrong");
+      if(!good)[...row.children].forEach(x=>{if(x.textContent===a)x.classList.add("right")})};
+     row.append(b)});
+    li.append(row);
+   }else{
+    const row=el("div","opts"),inp=el("input");inp.setAttribute("aria-label","Your answer");inp.autocomplete="off";inp.autocapitalize="off";
+    const b=el("button","chk","Check");
+    const go=()=>{if(locked||!inp.value.trim())return;rec(key,n,inp.value);finish(a.split("|").map(norm).includes(norm(inp.value)))};
+    b.onclick=go;inp.onkeydown=e=>{if(e.key==="Enter")go()};
+    row.append(inp,b);li.append(row);
+   }
+   li.append(fb);ol.append(li);const sv=(P[key]||{})[n];if(sv!==undefined){restoring=true;if(opts){[...li.querySelectorAll(".opts button")].find(x=>x.textContent===sv)?.click()}else{li.querySelector("input").value=sv;li.querySelector(".chk").click()}restoring=false}
+  });
+  box.append(ol);return box;
+ };
+ T[i].ex.forEach((ex,k)=>view.append(build(ex,i+"-"+k)));
+ scrollTo(0,0);
+}
+T.forEach((t,i)=>{const b=el("button","",IC[i]+" "+t.n);b.style.setProperty("--c",COL[i]);b.setAttribute("role","tab");b.onclick=()=>show(i);nav.append(b)});
+const $=id=>document.getElementById(id),API="/api/progress";
+let user="",canSave=false,timer;
+function queueSave(){if(!canSave)return;$("saveSt").textContent="Saving…";clearTimeout(timer);timer=setTimeout(async()=>{try{const r=await fetch(API,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:user,data:P})});if(!r.ok)throw 0;$("saveSt").textContent="✓ Saved"}catch(e){$("saveSt").textContent="⚠ Not saved – check your internet"}},500)}
+async function doLogin(raw){
+ const name=raw.trim().toLowerCase();
+ if(!/^[a-z0-9_-]{3,20}$/.test(name)){$("msg").textContent="Use 3–20 letters (a–z), numbers, - or _. No spaces.";return}
+ $("msg").textContent="Loading…";
+ try{const r=await fetch(API+"?name="+encodeURIComponent(name));if(!r.ok)throw 0;P=(await r.json()).data||{};canSave=true}
+ catch(e){P={};canSave=false;alert("Could not load your progress. You can still practise, but nothing will be saved.")}
+ user=name;try{localStorage.setItem("g2user",name)}catch(e){}
+ $("loginBox").hidden=true;$("app").hidden=false;$("who").textContent="🐭 Hi, "+name+"!";show(0);
+}
+$("go").onclick=()=>doLogin($("nameIn").value);
+$("nameIn").onkeydown=e=>{if(e.key==="Enter")doLogin($("nameIn").value)};
+$("out").onclick=()=>{try{localStorage.removeItem("g2user")}catch(e){}location.reload()};
+try{const u=localStorage.getItem("g2user");if(u)doLogin(u)}catch(e){}
+</script>
+</body>
+</html>
